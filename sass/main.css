@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+body {
+  background-color: #fff3ed;
+  margin: auto;
+  max-width: 1400px;
+}
+
+header {
+  background-color: #f3e9f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: 'Itim', cursive;
+}
+
+header a {
+  display: contents;
+}
+
+header .logo {
+  padding-left: 10px;
+  width: 15%;
+  height: 100px;
+}
+
+header .search {
+  width: 50%;
+  padding-top: 40px;
+}
+
+header .search .fa-search:before {
+  margin-left: -30px;
+}
+
+header input {
+  width: 90%;
+  height: 30px;
+  border-radius: 10px;
+}
+
+header .header_link {
+  width: 10%;
+  padding-top: 40px;
+}
+
+header .header_link a {
+  color: black;
+  text-decoration: none;
+}
+
+header nav {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-width: 1px;
+  border-color: #ce7d4c;
+  border-style: solid;
+  height: 30px;
+  padding-top: 10px;
+}
+
+header nav a {
+  color: black;
+}
+
+header nav #element_nav {
+  width: 100%;
+  background-color: #ce7d4c;
+  text-align: center;
+}
+
+footer {
+  background-color: #f3e9f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 150px;
+}
+
+footer h3 {
+  margin: 0;
+  padding: 20px;
+}
+
+footer .footer_category {
+  width: 100px;
+}
+
+footer .upper_arrow {
+  padding: 40px 60px;
+}
+
+main {
+  background-color: #ffffff;
+}
+
+main h1, main h2 {
+  margin: 0;
+  padding: 20px;
+}
+
+.product_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  height: 150px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding-bottom: 30px;
+}
+
+.product_list h3 {
+  margin: 0;
+}
+
+.product_list a {
+  display: contents;
+  width: 25%;
+  color: black;
+  text-decoration: none;
+}
+
+.product_list .product {
+  width: 25%;
+  padding: 30px;
+  border-width: 1px 1px 1px 1px;
+  border-color: #ce7d4a;
+  border-style: solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.product_list .product img {
+  width: 100px;
+}
+
+.product_list .product span {
+  width: 50%;
+}
+
+.main_product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 500px;
+}
+
+.image_detail {
+  padding: 20px;
+  height: 100%;
+}
+
+.product_presentation {
+  width: 50%;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.cart .article_resume {
+  width: 60%;
+}
+
+.cart .resume {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.cart .resume button {
+  height: 20px;
+}
+
+.customer_information {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 50px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,15 @@
+.main_product {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 500px;
+}
+
+.image_detail {
+    padding: 20px;
+    height: 100%;
+}
+
+.product_presentation {
+    width: 50%;
+}

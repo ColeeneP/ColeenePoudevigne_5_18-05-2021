@@ -1,0 +1,31 @@
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.cart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+        .article_resume {
+            width: 60%;
+        }
+
+        .resume {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+
+                button {
+                    height: 20px;
+                }
+        }
+}
+
+.customer_information {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 50px;
+}

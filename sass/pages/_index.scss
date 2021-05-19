@@ -1,0 +1,48 @@
+main {
+    background-color: $background_main;
+
+        h1, h2 {
+            margin: 0;
+            padding: 20px;
+        }
+}
+
+.product_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 150px;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+
+        h3 {
+            margin: 0;
+        }
+
+        a {
+            display: contents;
+            width: 25%;
+            color: black;
+            text-decoration: none;
+        }
+
+        .product {
+            width: 25%;
+            padding: 30px;
+            border-width: 1px 1px 1px 1px;
+            border-color: $third_color;
+            border-style: solid;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            img {
+                width: 100px;
+            }
+
+            span {
+                width: 50%;
+            }
+        }
+}

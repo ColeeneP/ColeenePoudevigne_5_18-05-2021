@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="title" content="Orinoco" />
+	<meta name="description" content="Orinoco - Entreprise de commerce en ligne" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <link rel="shortcut icon" type="image/png" href="img/favicon.jpg" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+	<link rel="stylesheet" href="../sass/main.css" />
+	
+	<script src="#" defer></script>
+
+    <title>Accueil</title>
+
+    
+<!-- Analytics -->
+ 
+<!-- Analytics END -->
+    
+</head>
+<body>
+    <header>
+        <a href="index.html"><img class="logo" src="../img/Logo_orinoco.JPG" alt="logo orinoco" /></a>
+        <div class="search">
+            <label for="search"></label>
+            <input id="search" value="Rechercher" />
+            <i class="fas fa-search"></i>            
+        </div>
+        <div class="header_link">
+            <a href="panier.html">
+                <i class="fas fa-shopping-basket"></i>
+                Panier</a>
+        </div>
+        <div class="header_link">
+            <a href="#">
+                <i class="fas fa-user"></i></i>
+                Mon compte</a>
+        </div>
+        <nav>
+            <div class="element_nav"><a href="#numerique">NUMERIQUE</a></div>            
+            <div class="element_nav"><a href="#jouets">JOUETS</a></div>
+            <div class="element_nav"><a href="#mobilier">MOBILIER</a></div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Mon panier</h1>
+
+        <section class="cart">
+                <table class="article_resume">
+                    <thead>
+                        <tr>
+                            <th><h2>Articles</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Article</td>
+                            <td><i class="fas fa-plus"></i></td>
+                            <td>
+                                <label for="quantity"></label>
+                                <input id="quantity" type="number" maxlength="2" />
+                            </td>
+                            <td><i class="fas fa-minus"></i></td>
+                            <td><i class="fas fa-trash-alt"></i></td>
+                            <td>Sous-total</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="resume">
+                <button type="button">Continuer mes achats</button>                     
+                <table class="cost_resume">
+                    <thead>
+                        <tr>
+                            <th><h2>Récapitulatif</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total</td>
+                            <td>€</td>
+                        </tr>
+                        <tr>
+                            <td>Frais de livraison</td>
+                            <td>€</td>
+                        </tr>
+                        <tr>
+                            <td>Total de commande</td>
+                            <td>€</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>    
+        </section>  
+        <section class="customer_information"> 
+                <h2>Mes coordonnées</h2>
+                <form>
+                    <label for="lastname"></label>
+                    <input id="lastname" type="text" value ="Nom" required/>
+                    <label for="name"></label>
+                    <input id="name" type="text" value ="Prénom" required/><br /><br />
+                    <label for="adress"></label>
+                    <input id="adress" type="text" value ="Adresse" required/>
+                    <label for="city"></label>
+                    <input id="city" type="text" value ="Ville" required/><br /><br />
+                    <label for="mail"></label>
+                    <input id="mail" type="mail" value ="Mail" required/><br /><br />
+
+                    <input type="submit" value="Commander" />
+                </form>    
+        </section> 
+    </main>
+
+    <footer>
+        <div>
+            <h3 class="footer_category">A PROPOS</h3>
+        </div>
+
+        <div>
+            <h3 class="footer_category">AIDE / SAV</h3>
+        </div>
+
+        <div class="upper_arrow"><i class="fas fa-arrow-up"></i></div>
+
+    </footer>
+</body>
+</html>

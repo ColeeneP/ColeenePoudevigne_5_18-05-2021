@@ -3,6 +3,13 @@ body {
   background-color: #fff3ed;
   margin: auto;
   max-width: 1400px;
+  font-size: 16px;
+}
+
+main {
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 500px;
 }
 
 header {
@@ -36,11 +43,68 @@ header .logo {
 header .header_link {
   width: 10%;
   padding-top: 40px;
+  position: relative;
 }
 
 header .header_link a {
   color: black;
   text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+header .header_link a .fa-shopping-bag {
+  color: #ce7d4a;
+}
+
+header .header_link a .number {
+  position: absolute;
+  color: white;
+  bottom: 45px;
+  left: 15px;
+  border: 1px solid #ae6ca1;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  background-color: #ae6ca1;
+}
+
+header .header_link a div {
+  display: block;
+  padding: 10px 0px 0px 10px;
+}
+
+@media (max-width: 800px) {
+  header {
+    padding: 20px;
+  }
+  header .logo {
+    width: 150px;
+    height: 80px;
+    padding: 10px 50px 10px 0px;
+  }
+  header .panier .div_panier {
+    display: none;
+  }
+  header .header_link {
+    padding: 20px 0px 0px 0px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  header .logo {
+    width: 150px;
+    height: 80px;
+    padding: 10px 50px 10px 0px;
+  }
 }
 
 footer {
@@ -52,23 +116,18 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: 150px;
 }
 
 footer h3 {
   margin: 0;
-  padding: 20px;
+  padding-top: 50px;
 }
 
 footer .footer_category {
   width: 100px;
-}
-
-footer .upper_arrow {
-  padding: 40px 60px;
 }
 
 main {
@@ -155,6 +214,21 @@ main h1, main h2 {
   text-align: right;
 }
 
+@media (max-width: 500px) {
+  .product_list .product {
+    width: 100%;
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+  .product_list .product {
+    width: 50%;
+  }
+}
+
 .main_product {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -214,47 +288,70 @@ main h1, main h2 {
   margin: 50px;
 }
 
+@media (max-width: 800px) {
+  .main_product {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    height: auto;
+  }
+  .main_product img {
+    width: auto;
+  }
+  .main_product .product_presentation {
+    width: 100%;
+  }
+  .main_product .product_presentation h1 {
+    padding: 0;
+  }
+  .main_product .product_presentation button {
+    margin: 30px 0px 30px 0px;
+  }
+}
+
 h1 {
   width: 100%;
   text-align: center;
 }
 
-.cart {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+table {
+  width: 100%;
 }
 
-.cart .article_resume {
-  width: 60%;
+table td {
+  text-align: center;
+  height: 50px;
 }
 
-.cart .resume {
-  width: 40%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-}
-
-.cart .resume button {
-  height: 20px;
+button {
+  width: 100%;
+  margin-top: 50px;
 }
 
 .customer_information {
   width: 100%;
-  text-align: center;
   padding-bottom: 50px;
+}
+
+.customer_information h2 {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.customer_information input {
+  width: 100%;
+  height: 30px;
+  margin: 10px 0px 10px 0px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 1px bold black;
+}
+
+.customer_information input.commander {
+  border: 1px solid black;
+}
+
+.customer_information input.commander:hover {
+  background-color: #ae6ca1;
 }
 /*# sourceMappingURL=main.css.map */

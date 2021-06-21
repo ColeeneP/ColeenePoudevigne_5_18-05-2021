@@ -66,3 +66,18 @@ main {
             }
         }
 }
+
+@media (max-width: 500px) {
+    .product_list .product {
+        width: 100%;
+        margin: 0;
+        border: none;
+        padding: 0;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+    .product_list .product {
+        width: 50%;
+    }
+}

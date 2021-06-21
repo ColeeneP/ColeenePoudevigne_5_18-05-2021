@@ -30,35 +30,35 @@
 
   function ficheProduit() {
     
-    let presentationProduct             = document.createElement('div');
-        presentationProduct.className   = "product_presentation";
-    let imgProduct                      = document.createElement('img');
-        imgProduct.className            = "image_detail";
-    let nameProduct                     = document.createElement('h1');
-        nameProduct.className           = "product_title";
-    let descriptionProduct              = document.createElement('div');
-        descriptionProduct.className    = "description";
-    let priceProduct                    = document.createElement('span');
-        priceProduct.className          = "price";
-    let listOption                      = document.createElement('select');
-        listOption.id                   = "optionArticle";
-    let productOption                   = document.createElement('option');
-        productOption.textContent       = "-- Sélectionnez une option --";  
-        let productOption1                   = document.createElement('option');
-            productOption1.textContent       = new String (sessionStorage.getItem('lenses1'));  
-    let listQuantity                    = document.createElement('select');
-        listQuantity.id                 = 'quantity';
-    let productQuantity                 = document.createElement('option');
-        productQuantity.textContent     = "-- Sélectionnez une quantité --";
-        let productQuantity1                 = document.createElement('option');
-            productQuantity1.textContent     = "1";
-        let productQuantity2                 = document.createElement('option');
-            productQuantity2.textContent     = "2";
-        let productQuantity3                 = document.createElement('option');
-            productQuantity3.textContent     = "3";
-    let addCart                         = document.createElement('button');
-        addCart.type                    = "submit";
-        addCart.textContent             = 'Ajouter au panier';   
+    let presentationProduct                 = document.createElement('div');
+        presentationProduct.className       = "product_presentation";
+    let imgProduct                          = document.createElement('img');
+        imgProduct.className                = "image_detail";
+    let nameProduct                         = document.createElement('h1');
+        nameProduct.className               = "product_title";
+    let descriptionProduct                  = document.createElement('div');
+        descriptionProduct.className        = "description";
+    let priceProduct                        = document.createElement('span');
+        priceProduct.className              = "price";
+    let listOption                          = document.createElement('select');
+        listOption.id                       = "optionArticle";
+    let productOption                       = document.createElement('option');
+        productOption.textContent           = "-- Sélectionnez une option --";  
+        let productOption1                  = document.createElement('option');
+            productOption1.textContent      = new String (sessionStorage.getItem('lenses1'));  
+    let listQuantity                        = document.createElement('select');
+        listQuantity.id                     = 'quantity';
+    let productQuantity                     = document.createElement('option');
+        productQuantity.textContent         = "-- Sélectionnez une quantité --";
+        let productQuantity1                = document.createElement('option');
+            productQuantity1.textContent    = "1";
+        let productQuantity2                = document.createElement('option');
+            productQuantity2.textContent    = "2";
+        let productQuantity3                = document.createElement('option');
+            productQuantity3.textContent    = "3";
+    let addCart                             = document.createElement('button');
+        addCart.type                        = "submit";
+        addCart.textContent                 = 'Ajouter au panier';   
   
     main.append(imgProduct);
     main.append(presentationProduct);
@@ -87,47 +87,42 @@
   
     console.log(nameProduct);
 
+    listOption.onmouseleave = () => {
+        let optionSelected = listOption.value;
+        console.log(optionSelected);
+        sessionStorage.setItem('optionChoices', optionSelected);
+    }
+
+    listQuantity.onmouseleave = () => {
+        let quantitySelected = listQuantity.value;
+        console.log(quantitySelected);
+        sessionStorage.setItem('quantity', quantitySelected);
+    }
+
+    let newCart = [
+        [sessionStorage.getItem('idProduit')],
+        [sessionStorage.getItem('nameProduct'), sessionStorage.getItem('quantity'), sessionStorage.getItem('optionChoices'), sessionStorage.getItem('priceProduct')] 
+    ];
+    let newCartStringified = JSON.stringify(newCart);
+
+    console.log(newCart);    
+    
     addCart.onclick = function addToCart() {
-        console.log('click ok');
-        sessionStorage.setItem('name', nameProduct);
-        sessionStorage.setItem('price', priceProduct);
-        switch (productOption) {
-            case sessionStorage.getItem('lenses1'):
-                sessionStorage.setItem('optionChoices', sessionStorage.getItem('lenses1'))
-                break;
+    console.log('click ok');
+
+    let cartData = [];
+    function test() {
+    if ('panier' in localStorage) {
+        cartData.splice(0, 0, newCart);
+    }
+    else {
+        localStorage.setItem('panier', newCartStringified)
+    }}
+    test();
         
-            default:
-                sessionStorage.setItem('optionChoices', null)
-                break;
-        };
 
-        switch (document.productQuantity) {
-            case productQuantity1:
-                sessionStorage.setItem('quantity', '1')
-                console.log('1 quantité sélectionnée');
-                break;
-
-            case productQuantity2:
-                sessionStorage.setItem('quantity', '2')
-                console.log('2 quantité sélectionnée');
-                break;
-
-            case productQuantity3:
-                sessionStorage.setItem('quantity', '3')
-                console.log('3 quantité sélectionnée');
-                break;
-        
-            default:
-                alert('Veuillez choisir une quantité');
-        };
-
-        if (productQuantity.selected = true)
-
-        if (sessionStorage('quantity').isNumber) {
-            alert('Votre article a bien été ajouté au panier');
-            location.href="../html/panier.html";
-        }
-
+    alert("Produit ajouté au panier");
+    location.href = "panier.html";
     };
   
   };

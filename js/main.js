@@ -107,7 +107,8 @@ function listeProduits(camera) {
 
 let numberArticle                 = document.createElement('div');
     numberArticle.className       = 'number';
-let headerLink                    = document.getElementsByClassName('header_link').append(numberArticle);
+let headerLink                    = document.getElementById('header_link');
+headerLink.append(numberArticle);
 
     numberArticle.textContent = '1';
     if (numberArticle === '1') {

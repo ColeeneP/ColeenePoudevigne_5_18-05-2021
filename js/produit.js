@@ -99,24 +99,26 @@
         sessionStorage.setItem('quantity', quantitySelected);
     }
 
-    let newCart = [
-        [sessionStorage.getItem('idProduit')],
-        [sessionStorage.getItem('nameProduct'), sessionStorage.getItem('quantity'), sessionStorage.getItem('optionChoices'), sessionStorage.getItem('priceProduct')] 
-    ];
-    let newCartStringified = JSON.stringify(newCart);
 
-    console.log(newCart);    
-    
+    let cartInfo = {'idProduct' : sessionStorage.getItem('idProduit'), 'nameProduct' : sessionStorage.getItem('nameProduct'), 'quantity' : sessionStorage.getItem('quantity'), 
+                    'option' : sessionStorage.getItem('optionChoices'), 'price' : sessionStorage.getItem('priceProduct')};
+
     addCart.onclick = function addToCart() {
     console.log('click ok');
-
-    let cartData = [];
+    
     function test() {
-    if ('panier' in localStorage) {
-        cartData.splice(0, 0, newCart);
-    }
+        let cartData = []; 
+    if (! localStorage.getItem('panier')) {
+        cartData.push(cartInfo);
+        localStorage.setItem('panier', JSON.stringify(cartData)); 
+        console.log(cartData);
+    } 
     else {
-        localStorage.setItem('panier', newCartStringified)
+
+    cartData = JSON.parse([localStorage.getItem('panier')]);        
+    cartData.push(cartInfo);
+       localStorage.setItem('panier', JSON.stringify(cartData));
+       console.log(cartData);        
     }}
     test();
         

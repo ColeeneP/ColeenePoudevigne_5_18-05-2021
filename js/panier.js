@@ -7,31 +7,36 @@ document.querySelector('main').append(cartSection);
 cartSection.append(titleCart);
 cartSection.append(articleTable);
 
-if (localStorage === null) {
+if (! localStorage.getItem('panier')) {
     alert('votre panier est vide');
 } else {
-    let panier = [localStorage.getItem('panier')];
+    let panier = JSON.parse(localStorage.getItem('panier'));
     console.log(panier);
-    panier.forEach(function affichagePanier() {
         let tableSectionArticle                     = document.createElement('th');
             tableSectionArticle.textContent         = 'Article';
         let tableSectionQuantity                    = document.createElement('th');
             tableSectionQuantity.textContent        = 'Quantité';
         let tableSectionPrice                       = document.createElement('th');
             tableSectionPrice.textContent           = 'Prix';
-        let lineTable                               = document.createElement('tr');
-        let tableListArticle                        = document.createElement('td');
-        let item = JSON.parse(localStorage.getItem('panier'));
-            tableListArticle.textContent            = item[1][0];      
-            console.log(item);                                       
-        let tableListQuantity                       = document.createElement('td');
-            tableListQuantity.textContent           = item[1][2];
-        let tableListPrice                          = document.createElement('td');
-            tableListPrice.textContent              = (item[1][3]) * (item[1][2]);
-
         articleTable.append(tableSectionArticle);
         articleTable.append(tableSectionQuantity);
-        articleTable.append(tableSectionPrice);
+        articleTable.append(tableSectionPrice);        
+
+        let item = JSON.parse(localStorage.getItem('panier'));
+            console.log(item); 
+
+
+    panier.forEach(function affichagePanier(item) {
+        let lineTable                               = document.createElement('tr');
+        let tableListArticle                        = document.createElement('td');            
+        let tableListQuantity                       = document.createElement('td');
+        let tableListPrice                          = document.createElement('td');        
+
+        tableListArticle.textContent            = item.nameProduct;      
+        tableListQuantity.textContent           = item.quantity;
+        tableListPrice.textContent              = item.quantity * item.price;
+
+
         articleTable.append(lineTable);
         lineTable.append(tableListArticle);
         lineTable.append(tableListQuantity);
@@ -74,6 +79,7 @@ let nameInput                       = document.createElement('input');
     nameLabel.append(nameInput);
     nameInput.id = ('name');
     nameInput.type = ('text');
+    sessionStorage.setItem
 
 let adress                          = document.createElement('label');
     form.append(adress);
@@ -108,11 +114,32 @@ let commandButton                   = document.createElement('input');
     commandButton.type = 'button';
     commandButton.value = 'Commander';
 
+    if (!localStorage.getItem('panier')) {
+        commandButton.style.visibility = "hidden";
+    }
+
+    let objCommande= { lastNameInput, nameInput, adressInput, cityInput, mailInput};
+
 
     commandButton.onclick = function commande() {
         // sessionStorage.setItem('totalPrice', totalPrice);
         localStorage.setItem('adress', (adressInput.value + ' ' + cityInput.value));
-        alert(adressInput.value + cityInput.value);
+        
         console.log('click ok');
         location.href = "../html/confirmation_commande.html";
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:3000/api/cameras/order',
+            data: objCommande,
+        })
+        .then(function (reponse) { 
+            sessionStorage.setItem('commande', reponse);
+            console.log(reponse);
+        })
+        .catch(function (erreur) {
+            console.log(erreur);
+        });
+alert(adressInput.value + cityInput.value);
+
     };

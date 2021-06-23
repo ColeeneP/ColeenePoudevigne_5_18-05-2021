@@ -40,13 +40,13 @@ header .logo {
   height: 100px;
 }
 
-header .header_link {
+header #header_link {
   width: 10%;
   padding-top: 40px;
   position: relative;
 }
 
-header .header_link a {
+header #header_link a {
   color: black;
   text-decoration: none;
   display: -webkit-box;
@@ -60,11 +60,11 @@ header .header_link a {
       flex-wrap: nowrap;
 }
 
-header .header_link a .fa-shopping-bag {
+header #header_link a .fa-shopping-bag {
   color: #ce7d4a;
 }
 
-header .header_link a .number {
+header #header_link a .number {
   position: absolute;
   color: white;
   bottom: 45px;
@@ -77,7 +77,7 @@ header .header_link a .number {
   background-color: #ae6ca1;
 }
 
-header .header_link a div {
+header #header_link a div {
   display: block;
   padding: 10px 0px 0px 10px;
 }
@@ -94,7 +94,7 @@ header .header_link a div {
   header .panier .div_panier {
     display: none;
   }
-  header .header_link {
+  header #header_link {
     padding: 20px 0px 0px 0px;
   }
 }
@@ -282,10 +282,6 @@ main h1, main h2 {
   border-right: 0px;
   border-left: 0px;
   border-bottom: 1px bold black;
-}
-
-.product_presentation button {
-  margin: 50px;
 }
 
 @media (max-width: 800px) {

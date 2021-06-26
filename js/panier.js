@@ -11,7 +11,6 @@ if (! localStorage.getItem('panier')) {
     alert('votre panier est vide');
 } else {
     let panier = JSON.parse(localStorage.getItem('panier'));
-    console.log(panier);
         let tableSectionArticle                     = document.createElement('th');
             tableSectionArticle.textContent         = 'Article';
         let tableSectionQuantity                    = document.createElement('th');
@@ -46,11 +45,13 @@ if (! localStorage.getItem('panier')) {
 }
 
 let buttonContinue = document.createElement('button');
-    buttonContinue.type = "submit";
     buttonContinue.textContent = "Continuer mes achats";
 
-document.querySelector('main').append(buttonContinue);
+    buttonContinue.onclick = function continueShopping() {
+        location.href = "../html/index.html";
+    }
 
+document.querySelector('main').append(buttonContinue);
 
 let customerInformation             = document.createElement('section');
     customerInformation.className = 'customer_information';
@@ -61,6 +62,7 @@ let titleInformation                = document.createElement('h2');
     customerInformation.append(titleInformation);
 
 let form                            = document.createElement('form');
+    form.id                         = 'form';
     customerInformation.append(form);
 let lastName                        = document.createElement('label');
     form.append(lastName);
@@ -107,6 +109,7 @@ let mailInput                       = document.createElement('input');
     mail.append(mailInput);
     mailInput.id = ('mail');
     mailInput.type = ('mail');
+    mailInput.pattern = "[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})";
 
 let commandButton                   = document.createElement('input');
     form.append(commandButton);
@@ -118,13 +121,53 @@ let commandButton                   = document.createElement('input');
         commandButton.style.visibility = "hidden";
     }
 
-    let objCommande= { lastNameInput, nameInput, adressInput, cityInput, mailInput};
+    let objCommande = {lastNameInput, nameInput, adressInput, cityInput, mailInput};
 
 
-    commandButton.onclick = function commande() {
-        // sessionStorage.setItem('totalPrice', totalPrice);
+
+    
+    commandButton.onclick = function submitCommand() {
+
+
+                let formValidation = document.getElementById('form');
+                formValidation.addEventListener('submit', commandButton);
+                // Validation du nom
+                let lastNameValidation = document.getElementById('lastname').value;
+                let lastNameRGEX = /^[a-zA-Z]{2,20}$/;
+                let lastNameResult = lastNameRGEX.test(lastNameValidation);
+                // Validation du prénom
+                let nameValidation = document.getElementById('name').value;
+                let nameRGEX = /^[a-zA-Z]{2,20}$/;
+                let nameResult = nameRGEX.test(nameValidation);
+                // Validation de l'adresse
+                let adressValidation = document.getElementById('adress').value;
+                let adressRGEX = /^\w$/;
+                let adressResult = adressRGEX.test(adressValidation);
+                // Validation de la ville
+                let cityValidation = document.getElementById('city').value;
+                let cityRGEX = /^[a-zA-Z]{2,20}$/;;
+                let cityResult = cityRGEX.test(cityValidation);
+                // Validation du mail
+                let mailValidation = document.getElementById('mail').value;
+                let mailRGEX = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/;
+                let mailResult = mailRGEX.test(mailValidation)
+
+        if (lastNameResult == false) {
+            lastNameInput.style.backgroundColor = '#ff00005d';
+        }
+        if (nameResult == false) {
+            nameInput.style.backgroundColor = '#ff00005d';   
+        }
+        if (adressResult == false) {
+            adressInput.style.backgroundColor = '#ff00005d';
+        }
+        if (cityResult == false) {
+            cityInput.style.backgroundColor = '#ff00005d';
+        }
+        if (mailResult == false) {
+            mailInput.style.backgroundColor = '#ff00005d';
+        } else {
         localStorage.setItem('adress', (adressInput.value + ' ' + cityInput.value));
-        
         console.log('click ok');
         location.href = "../html/confirmation_commande.html";
 
@@ -140,6 +183,6 @@ let commandButton                   = document.createElement('input');
         .catch(function (erreur) {
             console.log(erreur);
         });
-alert(adressInput.value + cityInput.value);
+        alert(adressInput.value + cityInput.value);         
 
-    };
+}}

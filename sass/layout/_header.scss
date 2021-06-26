@@ -22,17 +22,6 @@ header {
             padding-top: 40px;
             position: relative;
 
-                a {
-                    color: black;
-                    text-decoration: none;
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: nowrap;
-
-                    .fa-shopping-bag {
-                        color: $third_color;
-                    }
-
                     .number {
                     position: absolute;
                     color: white;
@@ -44,17 +33,27 @@ header {
                     width: 20px;
                     text-align: center;
                     background-color: $second-color;
+                    }            
+
+                a {
+                    color: black;
+                    text-decoration: none;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+
+                    .fa-shopping-bag {
+                        color: $third_color;
                     }
 
-                    div {
-                        display: block;
+                    #div_panier {
                         padding: 10px 0px 0px 10px;
                     }
                 }
         }
 }
 
-@media (max-width: 800px) {
+@media (min-width: 300px) and (max-width: 800px) {
     header {
         padding: 20px;
         .logo {
@@ -63,14 +62,16 @@ header {
             padding: 10px 50px 10px 0px;
         }
 
-        .panier {
-            .div_panier{
-                display: none;
-            }
-        }
         #header_link {
             padding: 20px 0px 0px 0px;
+
+            #div_panier {
+                display: none;
+                padding: 10px 0px 0px 10px;
         }
+
+
+    }
     }
 }
 

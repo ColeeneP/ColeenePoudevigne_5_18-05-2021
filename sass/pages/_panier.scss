@@ -1,5 +1,4 @@
 h1 {
-    width: 100%;
     text-align: center;
 }
 
@@ -14,7 +13,14 @@ table {
 
 button {
     width: 100%;
+    height: 30px;
     margin-top: 50px;
+    border-radius: 10px;
+    border: 1px solid black;
+
+    &:hover {
+        background-color: grey;
+    }
 }
 
 .customer_information {
@@ -34,12 +40,13 @@ button {
         border-right: 0px;
         border-left: 0px;
         border-bottom: 1px bold black;
+        border-radius: 10px;
 
         &.commander {
             border: 1px solid black;
             
             &:hover {
-                background-color: $second_color;
+                background-color: grey;
             }
         }
     }

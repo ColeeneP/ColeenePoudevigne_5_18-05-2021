@@ -1,22 +1,12 @@
 let mainTitle = document.createElement('h1');
 document.querySelector('main').append(mainTitle);
 
-    fetch('http://localhost:3000/api/cameras/order')
-.then(res => {
-       return res.json()
-})
-.then(commande => {
-    noCommande(commande)
-})
-
-function noCommande(commande) {
-    let idcommande = commande.order;
+    let idcommande = sessionStorage.getItem('commande');
     mainTitle.textContent = 'Commande effectuée sous le numéro ' + idcommande + '.';
-}
-
 
 let recap = document.createElement('div');
-    recap.textContent = 'Récapitulatif de commande';
+    recap.textContent = 'La commande a bien été envoyée à l\'adresse suivante :';
+    recap.style.textAlign = 'center';
 let price = document.createElement('span');
     price.textContent = sessionStorage.getItem('totalPrice');
 let adress = document.createElement('div');

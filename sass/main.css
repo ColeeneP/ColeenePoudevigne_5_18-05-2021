@@ -46,6 +46,19 @@ header #header_link {
   position: relative;
 }
 
+header #header_link .number {
+  position: absolute;
+  color: white;
+  bottom: 45px;
+  left: 15px;
+  border: 1px solid #ae6ca1;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  background-color: #ae6ca1;
+}
+
 header #header_link a {
   color: black;
   text-decoration: none;
@@ -64,25 +77,11 @@ header #header_link a .fa-shopping-bag {
   color: #ce7d4a;
 }
 
-header #header_link a .number {
-  position: absolute;
-  color: white;
-  bottom: 45px;
-  left: 15px;
-  border: 1px solid #ae6ca1;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  text-align: center;
-  background-color: #ae6ca1;
-}
-
-header #header_link a div {
-  display: block;
+header #header_link a #div_panier {
   padding: 10px 0px 0px 10px;
 }
 
-@media (max-width: 800px) {
+@media (min-width: 300px) and (max-width: 800px) {
   header {
     padding: 20px;
   }
@@ -91,11 +90,12 @@ header #header_link a div {
     height: 80px;
     padding: 10px 50px 10px 0px;
   }
-  header .panier .div_panier {
-    display: none;
-  }
   header #header_link {
     padding: 20px 0px 0px 0px;
+  }
+  header #header_link #div_panier {
+    display: none;
+    padding: 10px 0px 0px 10px;
   }
 }
 
@@ -305,7 +305,6 @@ main h1, main h2 {
 }
 
 h1 {
-  width: 100%;
   text-align: center;
 }
 
@@ -320,7 +319,14 @@ table td {
 
 button {
   width: 100%;
+  height: 30px;
   margin-top: 50px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+button:hover {
+  background-color: grey;
 }
 
 .customer_information {
@@ -341,6 +347,7 @@ button {
   border-right: 0px;
   border-left: 0px;
   border-bottom: 1px bold black;
+  border-radius: 10px;
 }
 
 .customer_information input.commander {
@@ -348,6 +355,6 @@ button {
 }
 
 .customer_information input.commander:hover {
-  background-color: #ae6ca1;
+  background-color: grey;
 }
 /*# sourceMappingURL=main.css.map */

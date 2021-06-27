@@ -67,15 +67,6 @@ arrayLenses.forEach(function(element) {
   
     console.log(nameProduct);
 
-    listOption.onmouseleave = () => {
-        let optionSelected = listOption.value;
-        console.log(optionSelected);
-        sessionStorage.setItem('optionChoices', optionSelected);
-    }
-
-
-
-
     addCart.onclick = function addToCart() {
     let cartInfo = {'idProduct' : sessionStorage.getItem('idProduit'), 'nameProduct' : sessionStorage.getItem('nameProduct'), 'quantity' : listQuantity.value, 
                     'option' : listOption.value, 'price' : sessionStorage.getItem('priceProduct')};
@@ -103,3 +94,19 @@ arrayLenses.forEach(function(element) {
 
     }};
 ficheProduit()
+
+let numberArticle                 = document.createElement('div');
+    numberArticle.className       = 'number';
+let headerLink                    = document.getElementById('header_link');
+headerLink.append(numberArticle);
+
+let panier = JSON.parse(localStorage.getItem('panier'));
+    if (! localStorage.getItem('panier')) {
+      numberArticle.style.display = "none";
+    }
+    else {
+      let article = 0;
+      panier.forEach(element => {
+        article += parseInt(element.quantity)}) 
+        numberArticle.textContent = article;  
+    };

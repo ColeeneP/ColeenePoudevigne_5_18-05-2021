@@ -105,18 +105,18 @@ function listeProduits(camera) {
   })
 }
 
-// let numberArticle                 = document.createElement('div');
-//     numberArticle.className       = 'number';
-// let headerLink                    = document.getElementById('header_link');
-// headerLink.append(numberArticle);
+let numberArticle                 = document.createElement('div');
+    numberArticle.className       = 'number';
+let headerLink                    = document.getElementById('header_link');
+headerLink.append(numberArticle);
 
-// let panier = JSON.parse(localStorage.getItem('panier'));
-//     if (! localStorage.getItem('panier')) {
-//       numberArticle.style.display = "none";
-//     }
-//     else {
-//       panier.foreach = function elementsInCart(element) {
-//         let article = element.quantity;
-//         numberArticle.textContent = article;
-//       }     
-//     };
+let panier = JSON.parse(localStorage.getItem('panier'));
+    if (! localStorage.getItem('panier')) {
+      numberArticle.style.display = "none";
+    }
+    else {
+      let article = 0;
+      panier.forEach(element => {
+        article += parseInt(element.quantity)}) 
+        numberArticle.textContent = article;  
+    };

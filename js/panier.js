@@ -9,6 +9,14 @@ cartSection.append(articleTable);
 
 if (! localStorage.getItem('panier')) {
     alert('votre panier est vide');
+    let buttonContinue = document.createElement('button');
+    buttonContinue.textContent = "Continuer mes achats";
+
+    buttonContinue.onclick = function continueShopping() {
+        location.href = "../html/index.html";
+    }
+
+document.querySelector('main').append(buttonContinue);
 } else {
     let panier = JSON.parse(localStorage.getItem('panier'));
         let tableSectionArticle                     = document.createElement('th');
@@ -43,6 +51,14 @@ if (! localStorage.getItem('panier')) {
 
         })
 }
+
+let price = document.createElement('div');
+let totalPrice = 0; 
+JSON.parse(localStorage.getItem('panier')).forEach(items => {totalPrice += items.price * items.quantity });
+price.textContent = 'Montant total de la commande : ' + totalPrice + ' €';
+price.style.textAlign = 'center';
+price.style.paddingTop = '40px';
+document.querySelector('main').append(price);
 
 let buttonContinue = document.createElement('button');
     buttonContinue.textContent = "Continuer mes achats";
@@ -121,7 +137,7 @@ let commandButton                   = document.createElement('input');
         commandButton.style.visibility = "hidden";
     }
 
-    let objCommande = {lastNameInput, nameInput, adressInput, cityInput, mailInput};
+
 
 
 
@@ -168,21 +184,70 @@ let commandButton                   = document.createElement('input');
             mailInput.style.backgroundColor = '#ff00005d';
         } else {
         localStorage.setItem('adress', (adressInput.value + ' ' + cityInput.value));
+        localStorage.setItem('identite', (lastNameInput.value + ' ' + nameInput.value));
         console.log('click ok');
         location.href = "../html/confirmation_commande.html";
 
-        axios({
-            method: 'post',
-            url: 'http://localhost:3000/api/cameras/order',
-            data: objCommande,
-        })
-        .then(function (reponse) { 
-            sessionStorage.setItem('commande', reponse);
-            console.log(reponse);
-        })
-        .catch(function (erreur) {
-            console.log(erreur);
-        });
-        alert(adressInput.value + cityInput.value);         
+        let panier = JSON.parse(localStorage.getItem('panier'));
+        let products = [];
+            panier.forEach(element => {
+                products.push(element.idProduct)
+            });
+        console.log(products);
+        let contact = {
+                    firstName: nameInput.value,
+                    lastName: lastNameInput.value,
+                    address: adressInput.value,
+                    city: cityInput.value,
+                    email: mailInput.value,
+        };
+        let contactCommande = JSON.stringify({contact, products});
+        console.log(contactCommande);
 
+        fetch('http://localhost:3000/api/cameras/order', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: contactCommande,
+        })
+        .then(response => {
+            return response.json()
+        })
+        .then (data => { 
+            console.log(data);
+            localStorage.setItem('commande', data.orderId);
+        })
+        .catch (erreur => {
+            console.log(erreur);
+        }); 
+        
+        function getprice(){   // fonction de calcul du prix total
+            totalPrice = 0 
+            JSON.parse(localStorage.getItem('panier')).forEach((items)=>{   //boucle pour calculer le prix total en foction du nombre d'article et de la quantité de chacun 
+                totalPrice += items.price*items.quantity/100
+            })
+            const total = document.createElement('div');   // affichage du prix total 
+            orderPrice = document.createElement('p')
+            orderPrice.textContent = totalPrice +'. 00 €'
+        
+            document.querySelector('main').append(total);
+            total.appendChild(orderPrice)
+            localStorage.setItem('totalPrice', orderPrice);
+        }
+        getprice()
 }}
+
+let numberArticle                 = document.createElement('div');
+    numberArticle.className       = 'number';
+let headerLink                    = document.getElementById('header_link');
+headerLink.append(numberArticle);
+
+let panier = JSON.parse(localStorage.getItem('panier'));
+    if (! localStorage.getItem('panier')) {
+      numberArticle.style.display = "none";
+    }
+    else {
+      let article = 0;
+      panier.forEach(element => {
+        article += parseInt(element.quantity)}) 
+        numberArticle.textContent = article;  
+    };

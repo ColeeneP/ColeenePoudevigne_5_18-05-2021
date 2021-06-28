@@ -125,7 +125,6 @@ let mailInput                       = document.createElement('input');
     mail.append(mailInput);
     mailInput.id = ('mail');
     mailInput.type = ('mail');
-    mailInput.pattern = "[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})";
 
 let commandButton                   = document.createElement('input');
     form.append(commandButton);
@@ -157,32 +156,20 @@ let commandButton                   = document.createElement('input');
                 let nameResult = nameRGEX.test(nameValidation);
                 // Validation de l'adresse
                 let adressValidation = document.getElementById('adress').value;
-                let adressRGEX = /^\w$/;
+                console.log(adressValidation);
+                let adressRGEX = /^(.){2,20}$/;
                 let adressResult = adressRGEX.test(adressValidation);
                 // Validation de la ville
                 let cityValidation = document.getElementById('city').value;
-                let cityRGEX = /^[a-zA-Z]{2,20}$/;;
+                let cityRGEX = /^[a-zA-Z]{2,20}$/;
                 let cityResult = cityRGEX.test(cityValidation);
                 // Validation du mail
                 let mailValidation = document.getElementById('mail').value;
                 let mailRGEX = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/;
                 let mailResult = mailRGEX.test(mailValidation)
+        console.log(lastNameResult, nameResult, adressResult, cityResult, mailResult);
 
-        if (lastNameResult == false) {
-            lastNameInput.style.backgroundColor = '#ff00005d';
-        }
-        if (nameResult == false) {
-            nameInput.style.backgroundColor = '#ff00005d';   
-        }
-        if (adressResult == false) {
-            adressInput.style.backgroundColor = '#ff00005d';
-        }
-        if (cityResult == false) {
-            cityInput.style.backgroundColor = '#ff00005d';
-        }
-        if (mailResult == false) {
-            mailInput.style.backgroundColor = '#ff00005d';
-        } else {
+        if (lastNameResult && nameResult && adressResult && cityResult && mailResult) {
         localStorage.setItem('adress', (adressInput.value + ' ' + cityInput.value));
         localStorage.setItem('identite', (lastNameInput.value + ' ' + nameInput.value));
         console.log('click ok');
@@ -234,7 +221,28 @@ let commandButton                   = document.createElement('input');
             localStorage.setItem('totalPrice', orderPrice);
         }
         getprice()
-}}
+        }
+
+
+            else if (lastNameResult == false || nameResult == false || adressResult == false || cityResult == false || mailResult == false) {
+                lastNameInput.style.backgroundColor = '#ff00005d';
+            
+            if (nameResult == false) {
+                nameInput.style.backgroundColor = '#ff00005d';   
+            }
+            if (adressResult == false) {
+                adressInput.style.backgroundColor = '#ff00005d';
+            }
+            if (cityResult == false) {
+                cityInput.style.backgroundColor = '#ff00005d';
+            }
+            if (mailResult == false) {
+                mailInput.style.backgroundColor = '#ff00005d';
+            }
+            }
+
+        
+        }
 
 let numberArticle                 = document.createElement('div');
     numberArticle.className       = 'number';
